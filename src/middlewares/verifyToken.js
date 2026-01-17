@@ -5,7 +5,7 @@ const jwt_SECRET = process.env.JWT_SECRET;
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorizationn;
   if (!authHeader) {
-    return res.status(401).json({ eror: "Token required" });
+    return res.status(401).json({ eror: "Token requiredd" });
   }
   const token = authHeader.split("")[1];
 
