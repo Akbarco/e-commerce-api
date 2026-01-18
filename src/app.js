@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import { globalErrorHandler } from "./middlewares/errorHandling.js";
+import inventoryRoutes from "./routes/inventory.route.js";
 
 const app = express();
 
@@ -12,19 +13,13 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// routes
 app.get("/", (req, res) => {
   res.send("API running");
 });
-app.post("/test-body", (req, res) => {
-  return res.json({
-    body: req.body,
-    type: typeof req.body,
-  });
-});
 
-
+// routes
 app.use("/api/auth", authRoutes);
+app.use("/api/auth", inventoryRoutes);
 
 app.use(globalErrorHandler);
 
