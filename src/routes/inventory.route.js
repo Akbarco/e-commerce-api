@@ -11,7 +11,7 @@ import { validationUUID } from "../middlewares/idParams.js";
 
 const inventoryRoutes = express.Router();
 
-// inventoryRoutes.use(veriftoken)
+inventoryRoutes.use(veriftoken)
 inventoryRoutes.get("/", getInventories);
 inventoryRoutes.get("/:id", validationUUID, getInventory);
 inventoryRoutes.post("/", createInventories);

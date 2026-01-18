@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 // routes
 app.use("/api/auth", authRoutes);
-app.use("/api/auth", inventoryRoutes);
+app.use("/api/inventories", inventoryRoutes);
 
 app.use(globalErrorHandler);
 
