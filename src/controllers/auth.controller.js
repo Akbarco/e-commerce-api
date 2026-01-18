@@ -75,4 +75,10 @@ export const login = async (req, res, next) => {
   }
 };
 
-export const logout = async (req, res) => {};
+export const logout = async (req, res) => {
+  res.clearCookie("jwt",{
+    ...cookieOptions(req),
+    maxAge: undefined
+  })
+  return successResponse(res, "Logout successful");
+};
