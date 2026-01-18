@@ -1,13 +1,25 @@
-export const succesResponse = (res, massage, data = null, status = 200) => {
+export const successResponse = (
+  res,
+  message = "Success",
+  data = null,
+  status = 200
+) => {
   return res.status(status).json({
-    succes: true,
-    massage,
+    success: true,
+    message,
     data,
   });
 };
-export const erorResponse = (res, massage, data = null, status = 400) => {
+
+export const errorResponse = (
+  res,
+  message = "Internal Server Error",
+  errors = null,
+  status = 500
+) => {
   return res.status(status).json({
-    succes: false,
-    data,
+    success: false,
+    message,
+    errors,
   });
 };

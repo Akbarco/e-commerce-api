@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 const jwt_SECRET = process.env.JWT_SECRET;
 
 const verifyToken = (req, res, next) => {
-  const authHeader = req.headers.authorizationn;
+  const authHeader = req.headers.authorization;//sengaja salah
   if (!authHeader) {
     return res.status(401).json({ eror: "Token requiredd" });
   }
