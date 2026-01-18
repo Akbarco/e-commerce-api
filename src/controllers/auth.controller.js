@@ -2,7 +2,7 @@ import { prisma } from "../lib/prisma.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { successResponse } from "../utils/response.js";
-import { AppError } from "../utils/AppError.js";
+import { AppError } from "../utils/appError.js";
 import cookieOptions from "../utils/cookieOption.js";
 
 export const register = async (req, res, next) => {
@@ -69,16 +69,16 @@ export const login = async (req, res, next) => {
 
     const { password: _, ...safeUser } = existingUser;
 
-    return successResponse(res, "Login successful", safeUser,200);
+    return successResponse(res, "Login successful", safeUser, 200);
   } catch (error) {
     next(error);
   }
 };
 
 export const logout = async (req, res) => {
-  res.clearCookie("jwt",{
+  res.clearCookie("jwt", {
     ...cookieOptions(req),
-    maxAge: undefined
-  })
+    maxAge: undefined,
+  });
   return successResponse(res, "Logout successful");
 };

@@ -7,8 +7,8 @@ import { globalErrorHandler } from "./middlewares/errorHandling.js";
 const app = express();
 
 // middleware
-app.use(cookieParser());
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
@@ -16,6 +16,13 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("API running");
 });
+app.post("/test-body", (req, res) => {
+  return res.json({
+    body: req.body,
+    type: typeof req.body,
+  });
+});
+
 
 app.use("/api/auth", authRoutes);
 
