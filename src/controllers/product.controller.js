@@ -121,10 +121,11 @@ export const createProduct = async (req, res, next) => {
         inventoryId,
       },
     });
+    const { image: _, ...safeProduct } = createdProduct;
 
     const baseUrl = `${req.protocol}://${req.get("host")}`;
     const responseProduct = {
-      ...createdProduct,
+      ...safeProduct,
       imageUrl: createdProduct.image
         ? `${baseUrl}${createdProduct.image}`
         : null,
@@ -150,6 +151,10 @@ export const updateProduct = async (req, res, next) => {
       throw new AppError("Product not found", 404);
     }
 
+    if (!name || !inventoryId) {
+      return next(new AppError("Name and inventoryId are required", 400));
+    }
+
     if (image && product.image) {
       const oldImagePath = path.join(
         process.cwd(),
@@ -170,19 +175,19 @@ export const updateProduct = async (req, res, next) => {
       ...(inventoryId && { inventoryId }),
       ...(image && { image }),
     };
-
     const updatedProduct = await prisma.product.update({
       where: { id: productId },
       data: updateData,
     });
-
+    
     const baseUrl = `${req.protocol}://${req.get("host")}`;
-
+    
+    const { image: _, ...safeProduct } = updatedProduct;
     return successResponse(
       res,
       "Product updated successfully",
       {
-        ...updatedProduct,
+        ...safeProduct,
         imageUrl: updatedProduct.image
           ? `${baseUrl}${updatedProduct.image}`
           : null,
