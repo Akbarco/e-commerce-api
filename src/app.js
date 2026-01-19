@@ -4,6 +4,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import { globalErrorHandler } from "./middlewares/errorHandling.js";
 import inventoryRoutes from "./routes/inventory.route.js";
+import productRoutes from "./routes/product.route.js";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 // routes
 app.use("/api/auth", authRoutes);
 app.use("/api/inventories", inventoryRoutes);
+app.use("/api/products", productRoutes);
 
 app.use(globalErrorHandler);
 

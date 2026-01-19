@@ -29,7 +29,7 @@ export const getInventory = async (req, res, next) => {
     next(error);
   }
 };
-export const createInventories = async (req, res, next) => {
+export const createInventory = async (req, res, next) => {
   try {
     const { name, description } = req.body;
 
