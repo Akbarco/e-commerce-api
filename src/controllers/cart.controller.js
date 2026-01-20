@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma.js";
+import { AppError } from "../utils/appError.js";
 import { successResponse } from "../utils/response.js";
 
 export const getAllCart = async (req, res, next) => {
@@ -29,15 +30,15 @@ export const addToCart = async (req, res, next) => {
     });
 
     if (quantity <= 0) {
-      throw new Error("Quantity must be greater than 0");
+      throw new AppError("Quantity must be greater than 0", 400);
     }
 
     if (!productId || !quantity) {
-      throw new Error("Product id and quantity are required");
+      throw new AppError("Product ID and quantity are required", 400);
     }
 
     if (!product) {
-      throw new Error("Product not found");
+      throw new AppError("Product not found", 404);
     }
 
     const totalPrice = product.price * quantity;
