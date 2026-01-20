@@ -13,6 +13,6 @@ invoiceRoutes.use(verifyToken);
 invoiceRoutes.get("/", getAllInvoice);
 invoiceRoutes.get("/:id", getInvoiceById);
 invoiceRoutes.get("/user/:email", getInvoiceByUsermail);
-invoiceRoutes.post("/checkot", checkout);
+invoiceRoutes.post("/checkout", checkout);
 
 export default invoiceRoutes;

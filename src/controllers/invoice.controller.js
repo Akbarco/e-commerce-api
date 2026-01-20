@@ -3,7 +3,7 @@ import { AppError } from "../utils/appError.js";
 import { successResponse } from "../utils/response.js";
 
 export const checkout = async (req, res, next) => {
-  const { email, name, phone, date } = req.user;
+  const { email, name, phone, date } = req.body;
   try {
     const carts = await prisma.cart.findMany({
       where: {
