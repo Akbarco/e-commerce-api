@@ -27,7 +27,7 @@ app.use("/api/inventories", inventoryRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/carts", cartRoutes);
 app.use("/api/invoice", invoiceRoutes);
-app.use("/api/statistik", statistikRoutes);
+app.use("/api/statistic", statistikRoutes);
 
 app.use(globalErrorHandler);
 

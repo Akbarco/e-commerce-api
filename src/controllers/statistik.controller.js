@@ -26,7 +26,7 @@ export const getRange = async (req, res, next) => {
       totalTerbayar,
     };
 
-    return successResponse(res, "Get all invoice success", result, 201);
+    return successResponse(res, "Get all invoice succes", result, 201);
   } catch (error) {
     next(error);
   }
