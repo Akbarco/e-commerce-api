@@ -77,7 +77,7 @@ export const getInvoiceByUsermail = async (req, res, next) => {
     const data = await prisma.invoice.findMany({
       where: {
         email,
-      },
+      },  
     });
 
     if (!data) {

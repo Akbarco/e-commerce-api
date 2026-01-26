@@ -91,6 +91,8 @@ export const deleteInventory = async (req, res, next) => {
       },
     });
 
+    
+
     if (!existInventory) {
       throw new AppError("inventory not found", 404);
     }
